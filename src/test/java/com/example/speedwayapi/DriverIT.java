@@ -31,14 +31,17 @@ public class DriverIT {
     @Test
     public void addDriver() throws Exception {
 
+        DriverDto driverObj = new DriverDto("Maria","Lopez",22,"Nickname1",1,5);
+
         mockMvc.perform(post("/driver")
-                .content("")
+                .content(objectMapper.writeValueAsString(driverObj))
                 .contentType(MediaType.APPLICATION_JSON)
         ).andExpect(status().isCreated());
 
         mockMvc.perform(get("/driver")
         ).andExpect(status().isOk())
-                .andExpect(jsonPath("length()").value(1));
+                .andExpect(jsonPath("length()").value(1))
+                .andExpect(jsonPath("[0].firstName").value("Maria"));
 
 
     }

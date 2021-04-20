@@ -17,5 +17,10 @@ public class DriverController {
     }
 
     @GetMapping("driver")
-    public String getDrivers(){return "[{}]"; }
+    //public String getDrivers(){return "[{}]"; }
+    public String getDrivers()
+    {
+        return  "[{\"firstName\":\"Maria\"}]";
+    }
+
 }
