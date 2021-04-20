@@ -75,4 +75,28 @@ public class RaceCarControllerIT {
 
     }
 
+    @Test // Post Conflict
+    void postConflictTest() throws Exception{
+
+        RaceCarDto input1 = new RaceCarDto("The Condor","Corvette","2019","Iqbal","AVAILABLE",189);
+
+        //RaceCarDto input2 = new RaceCarDto("Blue Fire","Ferrari","2017","Raghav","AVAILABLE",289);
+        mockMvc.perform(
+                post("/add-race-car")
+                        .content(objectMapper.writeValueAsString(input1))
+                        .contentType(MediaType.APPLICATION_JSON)
+        )
+                .andExpect(status().isCreated());
+
+
+        mockMvc.perform(
+                post("/add-race-car")
+                        .content(objectMapper.writeValueAsString(input1))
+                        .contentType(MediaType.APPLICATION_JSON)
+        )
+                .andExpect(status().isConflict());
+
+    }
+
+
 }
