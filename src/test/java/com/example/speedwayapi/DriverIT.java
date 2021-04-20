@@ -10,7 +10,9 @@ import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
@@ -33,6 +35,11 @@ public class DriverIT {
                 .content("")
                 .contentType(MediaType.APPLICATION_JSON)
         ).andExpect(status().isCreated());
+
+        mockMvc.perform(get("/driver")
+        ).andExpect(status().isOk())
+                .andExpect(jsonPath("length()").value(1));
+
 
     }
 }

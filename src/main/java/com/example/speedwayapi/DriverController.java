@@ -15,4 +15,7 @@ public class DriverController {
     public void addDriver(){
 
     }
+
+    @GetMapping("driver")
+    public String getDrivers(){return "[{}]"; }
 }
