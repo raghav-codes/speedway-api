@@ -1,8 +1,10 @@
 package com.example.speedwayapi.car;
 
+import lombok.Data;
 import lombok.Value;
 
 @Value
+@Data
 public class RaceCarDto {
 
     String nickname;
