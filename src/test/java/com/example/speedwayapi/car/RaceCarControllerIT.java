@@ -17,7 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @Transactional
-public class CarControllerIT {
+public class RaceCarControllerIT {
 
     @Autowired
     MockMvc mockMvc;
@@ -28,7 +28,7 @@ public class CarControllerIT {
     @Test
     void initialEmptyGetTest() throws Exception{
 
-        mockMvc.perform(get("/racecars"))
+        mockMvc.perform(get("/race-cars"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("length()").value(0))
                 .andDo(print());
