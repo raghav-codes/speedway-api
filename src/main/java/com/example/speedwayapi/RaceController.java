@@ -16,7 +16,7 @@ public class RaceController {
 
     }
 
-    @GetMapping("driver")
+    @GetMapping("raceevent")
     public String getDrivers(){return "[{}]"; }
 
 
