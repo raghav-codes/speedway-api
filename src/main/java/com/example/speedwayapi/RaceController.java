@@ -17,7 +17,7 @@ public class RaceController {
     }
 
     @GetMapping("raceevent")
-    public String getDrivers(){return "[{}]"; }
+    public String getRaceEvent(){return "[{\"name\":\"Grand Prix III\"}]"; }
 
 
 }
