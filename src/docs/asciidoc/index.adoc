@@ -13,3 +13,19 @@ include::{snippets}/postDriver/http-request.adoc[]
 
 .response
 include::{snippets}/postDriver/http-response.adoc[]
+
+GetRaceCars
+
+.request
+include::{snippets}/GetRaceCars/http-request.adoc[]
+
+.response
+include::{snippets}/GetRaceCars/http-response.adoc[]
+
+PostRaceCar
+
+.request
+include::{snippets}/PostRaceCar/http-request.adoc[]
+
+.response
+include::{snippets}/PostRaceCar/http-response.adoc[]
