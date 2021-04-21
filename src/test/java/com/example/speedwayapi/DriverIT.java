@@ -10,8 +10,12 @@ import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
+import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
+//import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
+import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
+import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -38,7 +42,9 @@ public class DriverIT {
         mockMvc.perform(post("/driver")
                 .content(objectMapper.writeValueAsString(driverObj))
                 .contentType(MediaType.APPLICATION_JSON)
-        ).andExpect(status().isCreated());
+        ).andExpect(status().isCreated())
+                .andDo(document("postDriver"))
+        ;
 
         mockMvc.perform(post("/driver")
                 .content(objectMapper.writeValueAsString(driverObj2))
@@ -55,6 +61,15 @@ public class DriverIT {
                 .andExpect(jsonPath("length()").value(3))
                 .andExpect(jsonPath("[0].firstName").value("Maria"))
                 .andExpect(jsonPath("[2].wins").value("3"))
+                .andDo(document("getDrivers", responseFields(
+                        fieldWithPath("[0].firstName").description("First Name of the driver"),
+                        fieldWithPath("[0].lastName").description("Last Name of the driver"),
+                        fieldWithPath("[0].age").description("Age of the driver"),
+                        fieldWithPath("[0].nickName").description("Nick Name of the driver"),
+                        fieldWithPath("[0].wins").description("Driver Win count"),
+                        fieldWithPath("[0].loss").description("Driver loss count")
+
+                )))
         ;
 
 

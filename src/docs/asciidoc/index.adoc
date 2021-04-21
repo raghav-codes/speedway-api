@@ -1,0 +1,15 @@
+getDrivers
+
+.request
+include::{snippets}/getDrivers/http-request.adoc[]
+
+.response
+include::{snippets}/getDrivers/http-response.adoc[]
+
+postDriver
+
+.request
+include::{snippets}/postDriver/http-request.adoc[]
+
+.response
+include::{snippets}/postDriver/http-response.adoc[]
