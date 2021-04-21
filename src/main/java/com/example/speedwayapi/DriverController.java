@@ -1,26 +1,33 @@
 package com.example.speedwayapi;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 
 public class DriverController {
 
+    DriverService driverServ;
+
+    public DriverController(DriverService driverServ) {
+        this.driverServ = driverServ;
+    }
+
     @PostMapping("driver")
     @ResponseStatus(HttpStatus.CREATED)
-    public void addDriver(){
+    public void addDriver(@RequestBody DriverDto driverDtoObject){
+        this.driverServ.create(driverDtoObject);
 
     }
 
     @GetMapping("driver")
-    //public String getDrivers(){return "[{}]"; }
-    public String getDrivers()
+
+    public List<DriverDto> getDrivers()
     {
-        return  "[{\"firstName\":\"Maria\"}]";
+               return this.driverServ.fetchAll();
+
     }
 
 }

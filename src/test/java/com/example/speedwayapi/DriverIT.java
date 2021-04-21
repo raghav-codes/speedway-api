@@ -32,16 +32,30 @@ public class DriverIT {
     public void addDriver() throws Exception {
 
         DriverDto driverObj = new DriverDto("Maria","Lopez",22,"Nickname1",1,5);
+        DriverDto driverObj2 = new DriverDto("Naria","Lopez",23,"Nickname2",2,5);
+        DriverDto driverObj3 = new DriverDto("Oaria","Lopez",24,"Nickname3",3,5);
 
         mockMvc.perform(post("/driver")
                 .content(objectMapper.writeValueAsString(driverObj))
                 .contentType(MediaType.APPLICATION_JSON)
         ).andExpect(status().isCreated());
 
+        mockMvc.perform(post("/driver")
+                .content(objectMapper.writeValueAsString(driverObj2))
+                .contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(status().isCreated());
+
+        mockMvc.perform(post("/driver")
+                .content(objectMapper.writeValueAsString(driverObj3))
+                .contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(status().isCreated());
+
         mockMvc.perform(get("/driver")
         ).andExpect(status().isOk())
-                .andExpect(jsonPath("length()").value(1))
-                .andExpect(jsonPath("[0].firstName").value("Maria"));
+                .andExpect(jsonPath("length()").value(3))
+                .andExpect(jsonPath("[0].firstName").value("Maria"))
+                .andExpect(jsonPath("[2].wins").value("3"))
+        ;
 
 
     }
