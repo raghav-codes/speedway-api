@@ -29,3 +29,19 @@ include::{snippets}/PostRaceEvent/http-request.adoc[]
 
 .response
 include::{snippets}/PostRaceEvent/http-response.adoc[]
+
+GetRaceCars
+
+.request
+include::{snippets}/GetRaceCars/http-request.adoc[]
+
+.response
+include::{snippets}/GetRaceCars/http-response.adoc[]
+
+PostRaceCar
+
+.request
+include::{snippets}/PostRaceCar/http-request.adoc[]
+
+.response
+include::{snippets}/PostRaceCar/http-response.adoc[]
