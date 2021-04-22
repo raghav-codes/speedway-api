@@ -2,6 +2,9 @@ package com.example.speedwayapi;
 
 
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +15,9 @@ import java.time.LocalTime;
 
 @Entity
 @EqualsAndHashCode
+@NoArgsConstructor
+@Getter
+@Setter
 public class RaceEntity {
 
     @Id

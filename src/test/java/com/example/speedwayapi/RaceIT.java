@@ -37,6 +37,10 @@ public class RaceIT {
         LocalTime time1 = LocalTime.now();
         RaceDTO raceDTO = new RaceDTO("Grand Prix III","stock car",date1,time1,"Gamma","Michael");
 
+        LocalDate date2 = LocalDate.now();
+        LocalTime time2 = LocalTime.now();
+        RaceDTO raceDTO1 = new RaceDTO("Grand Prix 4","stock car",date2,time2,"Gamma","Michael");
+
 
         mockMvc.perform(post("/raceevent")
                 .content("")
@@ -44,10 +48,17 @@ public class RaceIT {
                 .contentType(MediaType.APPLICATION_JSON)
         ).andExpect(status().isCreated());
 
+        mockMvc.perform(post("/raceevent")
+                .content("")
+                .content(objectMapper.writeValueAsString(raceDTO1))
+                .contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(status().isCreated());
+
         mockMvc.perform(get("/raceevent")
         ).andExpect(status().isOk())
-                .andExpect(jsonPath("length()").value(1))
-                .andExpect(jsonPath("[0].name").value("Grand Prix III"));;
+                .andExpect(jsonPath("length()").value(2))
+                .andExpect(jsonPath("[0].name").value("Grand Prix III"))
+                .andExpect(jsonPath("[1].name").value("Grand Prix 4"));
 
 
 
