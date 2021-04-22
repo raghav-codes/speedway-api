@@ -19,7 +19,7 @@ public class RaceCarController {
     }*/
 
     @GetMapping("race-cars")
-    public List<RaceCarDto> getAllRaceCars() {
+    public List<RaceCarEntity> getAllRaceCars() {
         return raceCarService.getAllRaceCars();
     }
 

@@ -1,5 +1,6 @@
 package com.example.speedwayapi;
 
+import com.example.speedwayapi.car.RaceCarEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,14 @@ public class DriverService {
                         driverObj.getAge(),driverObj.getNickName(),
                         driverObj.getWins(),driverObj.getLoss()));
     }
+
+
+    /*public void addDriverWithCars (List<RaceCarEntity> cars){
+        driverReposit.save(
+                new DriverEntity(driverObj.getFirstName(),driverObj.getLastName(),
+                        driverObj.getAge(),driverObj.getNickName(),
+                        driverObj.getWins(),driverObj.getLoss()));
+    }*/
 
     public List<DriverDto> fetchAll() {
 

@@ -27,13 +27,13 @@ public class RaceCarServiceTest {
 
     @Test
     public void getAllRaceCarsTest(){
-        List<RaceCarDto> raceCarDtoList = new ArrayList<>();
+        List<RaceCarEntity> raceCarEntityList = new ArrayList<>();
 
-        raceCarDtoList.add(new RaceCarDto("The Condor","Corvette","2019","Raghav","AVAILABLE",185));
+        raceCarEntityList.add(new RaceCarEntity("The Condor","Corvette","2019","Raghav","AVAILABLE",185));
 
         when(repository.findAll()).thenReturn(List.of(new RaceCarEntity("The Condor","Corvette","2019","Raghav","AVAILABLE",185)));
 
-        assertEquals(raceCarService.getAllRaceCars(),raceCarDtoList);
+        assertEquals(raceCarService.getAllRaceCars(),raceCarEntityList);
     }
 
 

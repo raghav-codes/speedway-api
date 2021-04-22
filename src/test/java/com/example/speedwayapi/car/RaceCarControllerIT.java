@@ -79,6 +79,7 @@ public class RaceCarControllerIT {
                 .andExpect(jsonPath("length()").value(2))
                 .andDo(print())
                 .andDo(document("GetRaceCars", responseFields(
+                        fieldWithPath("[1].id").description("Driver ID"),
                         fieldWithPath("[1].nickname").description("Blue Fire"),
                         fieldWithPath("[1].model").description("Ferrari"),
                         fieldWithPath("[1].year").description("2017"),

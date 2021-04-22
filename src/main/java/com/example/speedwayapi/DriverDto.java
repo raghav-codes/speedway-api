@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 @Data
 public class DriverDto {
+
     private String firstName;
     private String lastName;
     private int age;
