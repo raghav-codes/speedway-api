@@ -14,6 +14,22 @@ include::{snippets}/postDriver/http-request.adoc[]
 .response
 include::{snippets}/postDriver/http-response.adoc[]
 
+GetRaceEvent
+
+.request
+include::{snippets}/GetRaceEvent/http-request.adoc[]
+
+.response
+include::{snippets}/GetRaceEvent/http-response.adoc[]
+
+PostRaceEvent
+
+.request
+include::{snippets}/PostRaceEvent/http-request.adoc[]
+
+.response
+include::{snippets}/PostRaceEvent/http-response.adoc[]
+
 GetRaceCars
 
 .request
