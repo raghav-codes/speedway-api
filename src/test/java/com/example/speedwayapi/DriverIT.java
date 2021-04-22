@@ -1,5 +1,6 @@
 package com.example.speedwayapi;
 
+import com.example.speedwayapi.car.RaceCarEntity;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 //import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
@@ -32,12 +36,13 @@ public class DriverIT {
     @Autowired
     ObjectMapper objectMapper;
 
+
     @Test
     public void addDriver() throws Exception {
 
-        DriverDto driverObj = new DriverDto("Maria","Lopez",22,"Nickname1",1,5);
-        DriverDto driverObj2 = new DriverDto("Naria","Lopez",23,"Nickname2",2,5);
-        DriverDto driverObj3 = new DriverDto("Oaria","Lopez",24,"Nickname3",3,5);
+        DriverDto driverObj = new DriverDto("Maria", "Lopez", 22, "Nickname1", 1, 5);
+        DriverDto driverObj2 = new DriverDto( "Naria", "Lopez", 23, "Nickname2", 2, 5);
+        DriverDto driverObj3 = new DriverDto( "Oaria", "Lopez", 24, "Nickname3", 3, 5);
 
         mockMvc.perform(post("/driver")
                 .content(objectMapper.writeValueAsString(driverObj))
@@ -69,9 +74,23 @@ public class DriverIT {
                         fieldWithPath("[0].wins").description("Driver Win count"),
                         fieldWithPath("[0].loss").description("Driver loss count")
 
-                )))
-        ;
-
-
+                )));
     }
+
+    /*@Test
+    public void addDriverWithCars() throws Exception {
+
+        DriverEntity driver = new DriverEntity("Maria", "Lopez", 22, "Nickname1", 1, 5);
+        RaceCarEntity car1 = new RaceCarEntity("The Condor","Corvette","2019","Iqbal","AVAILABLE",189,driver);
+        RaceCarEntity car2 = new RaceCarEntity("Blue Fire","Ferrari","2017","Raghav","AVAILABLE",289, driver);
+
+        List<RaceCarEntity> cars = Arrays.asList(car1, car2);
+
+        mockMvc.perform(post("/add-driver-with-cars")
+                .content(objectMapper.writeValueAsString(cars))
+                .contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(status().isCreated());
+
+    }*/
 }
+

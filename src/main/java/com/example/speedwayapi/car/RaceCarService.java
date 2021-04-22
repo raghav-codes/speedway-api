@@ -20,20 +20,8 @@ public class RaceCarService {
     String status;
     long top_speed;
 
-    public List<RaceCarDto> getAllRaceCars() {
-        return raceCarRepository.findAll()
-                .stream()
-                .map(raceCarEntity -> {
-                    return new RaceCarDto(
-                            raceCarEntity.getNickname(),
-                            raceCarEntity.getModel(),
-                            raceCarEntity.getYear(),
-                            raceCarEntity.getOwner(),
-                            raceCarEntity.getStatus(),
-                            raceCarEntity.getTop_speed()
-                    );
-                })
-                .collect(Collectors.toList());
+    public List<RaceCarEntity> getAllRaceCars() {
+        return raceCarRepository.findAll();
     }
 
     public void addRaceCar(RaceCarDto raceCarDto) throws RaceCarExistException{
