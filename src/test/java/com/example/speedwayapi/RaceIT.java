@@ -13,6 +13,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
+import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
+import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -46,7 +49,8 @@ public class RaceIT {
                 .content("")
                 .content(objectMapper.writeValueAsString(raceDTO))
                 .contentType(MediaType.APPLICATION_JSON)
-        ).andExpect(status().isCreated());
+        ).andExpect(status().isCreated())
+         .andDo(document("PostRaceEvent"));
 
         mockMvc.perform(post("/raceevent")
                 .content("")
@@ -58,7 +62,16 @@ public class RaceIT {
         ).andExpect(status().isOk())
                 .andExpect(jsonPath("length()").value(2))
                 .andExpect(jsonPath("[0].name").value("Grand Prix III"))
-                .andExpect(jsonPath("[1].name").value("Grand Prix 4"));
+                .andExpect(jsonPath("[1].name").value("Grand Prix 4"))
+                .andDo(document("GetRaceEvent", responseFields(
+                        fieldWithPath("[0].name").description("Name of the event"),
+                        fieldWithPath("[0].category").description("Category of the event"),
+                        fieldWithPath("[0].date").description("Date of the event"),
+                        fieldWithPath("[0].bestTime").description("Best time of the event"),
+                        fieldWithPath("[0].winner").description("Winner of the event"),
+                        fieldWithPath("[0].participants").description("Participants of the event")
+
+                )));
 
 
 
