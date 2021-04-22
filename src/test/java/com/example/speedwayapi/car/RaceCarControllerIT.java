@@ -85,7 +85,8 @@ public class RaceCarControllerIT {
                         fieldWithPath("[1].year").description("2017"),
                         fieldWithPath("[1].owner").description("Raghav"),
                         fieldWithPath("[1].status").description("AVAILABLE"),
-                        fieldWithPath("[1].top_speed").description("289")
+                        fieldWithPath("[1].top_speed").description("289"),
+                        fieldWithPath("[1].driver").description("Driver")
                 )));
 
     }
