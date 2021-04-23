@@ -45,3 +45,11 @@ include::{snippets}/PostRaceCar/http-request.adoc[]
 
 .response
 include::{snippets}/PostRaceCar/http-response.adoc[]
+
+PostRaceCarConflict
+
+.request
+include::{snippets}/PostRaceCarConflict/http-request.adoc[]
+
+.response
+include::{snippets}/PostRaceCarConflict/http-response.adoc[]
