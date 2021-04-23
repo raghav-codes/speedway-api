@@ -12,11 +12,6 @@ public class RaceCarController {
 @Autowired
     private RaceCarService raceCarService;
 
-    /*@GetMapping("race-cars")
-    String getAllRaceCars(){
-
-        return "{}";
-    }*/
 
     @GetMapping("race-cars")
     public List<RaceCarEntity> getAllRaceCars() {

@@ -30,12 +30,5 @@ public class DriverController {
     }
 
 
-    /*@PostMapping("add-driver-with-cars")
-    @ResponseStatus(HttpStatus.CREATED)
-    public void addDriver(@RequestBody List<RaceCarEntity> cars){
-        this.driverServ.addDriverWithCars(cars);
-
-    }*/
-
 
 }

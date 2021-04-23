@@ -25,12 +25,7 @@ public class DriverService {
     }
 
 
-    /*public void addDriverWithCars (List<RaceCarEntity> cars){
-        driverReposit.save(
-                new DriverEntity(driverObj.getFirstName(),driverObj.getLastName(),
-                        driverObj.getAge(),driverObj.getNickName(),
-                        driverObj.getWins(),driverObj.getLoss()));
-    }*/
+
 
     public List<DriverDto> fetchAll() {
 
