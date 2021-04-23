@@ -111,7 +111,8 @@ public class RaceCarControllerIT {
                         .content(objectMapper.writeValueAsString(input1))
                         .contentType(MediaType.APPLICATION_JSON)
         )
-                .andExpect(status().isConflict());
+                .andExpect(status().isConflict())
+                .andDo(document("PostRaceCarConflict"));
 
     }
 
